@@ -1,6 +1,9 @@
 const express = require("express");
 const VoiceResponse = require("twilio").twiml.VoiceResponse;
 const ngrok = require("ngrok");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 

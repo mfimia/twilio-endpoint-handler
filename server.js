@@ -2,9 +2,11 @@ const express = require("express");
 const VoiceResponse = require("twilio").twiml.VoiceResponse;
 const ngrok = require("ngrok");
 
+const PORT = process.env.PORT || 5000;
+
 // expose localhost
 (async function () {
-  const url = await ngrok.connect(5000);
+  const url = await ngrok.connect(PORT);
   console.log(url);
 })();
 
@@ -22,9 +24,7 @@ app.post("/voice", (_, res) => {
   res.send(twiml.toString());
 });
 
-const PORT = process.env.PORT || 5000;
-
-// Create an HTTP server and listen for requests on port 5000
+// Create an HTTP server and listen for requests on env port
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
